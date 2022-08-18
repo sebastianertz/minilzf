@@ -1,0 +1,11 @@
+DESCRIPTION
+    This is a modified (removed normal lzf, added lzf-best), minified,
+    bugfixed (abort search if max match len found) lzf library
+
+AUTHOR
+    The lzf library was written by Marc Lehmann <schmorp@schmorp.de>
+    (See also http://software.schmorp.de/pkg/liblzf).
+    minilzf was written by insane/rabenauge^tscc (https://insane.tscc.de).
+
+TODO
+    example pack program
