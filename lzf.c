@@ -85,7 +85,7 @@ unsigned int lzf_compress(const void *const in_data, unsigned int in_len,
             if (len > best_l) {
                 best_p = p;
                 best_l = len;
-                if (len >= (LZF_MAX_REF)) break; // abort search if max match len found
+                if (len >= (LZF_MAX_REF)) break; /* abort search if max match len found */
             }
           }
         }
