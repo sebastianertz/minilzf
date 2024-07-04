@@ -157,20 +157,20 @@ lzf_decompress (const void *const in_data,  unsigned int in_len,
     unsigned int ctrl = *ip++;
     if (ctrl < (1 << 5)) { /* literal run */
       ctrl++;
-      if (op + ctrl > out_end) return 0; // depacked data too big for out_len
-      if (ip + ctrl > in_end) return 0; // input error
+      if (op + ctrl > out_end) return 0; /* depacked data too big for out_len */
+      if (ip + ctrl > in_end) return 0; /* input error */
       while (ctrl--) *op++ = *ip++;
     } else { /* back reference */
       unsigned int len = ctrl >> 5;
       uint8_t *ref = op - ((ctrl & 0x1f) << 8) - 1;
-      if (ip >= in_end) return 0; // input error
+      if (ip >= in_end) return 0; /* input error */
       if (len == 7) {
 	len += *ip++;
-        if (ip >= in_end) return 0; // input error
+        if (ip >= in_end) return 0; /* input error */
       };
       ref -= *ip++;
-      if (op + len + 2 > out_end) return 0; // depacked data too big for out_len
-      if (ref < (uint8_t *)out_data) return 0; // invalid backwards reference
+      if (op + len + 2 > out_end) return 0; /* depacked data too big for out_len */
+      if (ref < (uint8_t *)out_data) return 0; /* invalid backwards reference */
       len += 2;
       do *op++ = *ref++; while (--len);
     }
